@@ -43,7 +43,7 @@ Prebuilt: `rxnudge-v1.0.4-binaries/` (merged flash image, parts, SHA-256).
 | [docs/OTA.md](docs/OTA.md) | firmware updates and rollback |
 | [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md) | definition of done, host vs device verification |
 | [docs/KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md) | limits and measured numbers |
-| `docs/screens/`, `docs/portal/` | rendered UI previews | rendered before final name MedTracker/RxNudge |
+| `docs/screens/`, `docs/portal/` | ui renders (before final name MedTracker/RxNudge) |
 
 ## Status
 Host-verified: clean builds, all native tests, rendered previews.
