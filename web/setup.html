@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RxNudge Wi-Fi setup</title>
+<style>body{margin:0;font:17px/1.4 system-ui,sans-serif;background:#f4f4f2;color:#111}main{max-width:480px;margin:auto;padding:16px}
+.card{background:#fff;border:1px solid #ccc;border-radius:8px;padding:14px;margin-bottom:12px}label{display:block;margin:10px 0 3px;font-size:15px;color:#444}
+input,select{width:100%;box-sizing:border-box;padding:11px;font-size:17px;border:1px solid #999;border-radius:6px}
+button{padding:11px 16px;font-size:16px;border-radius:6px;border:1px solid #111;background:#111;color:#fff;margin-top:12px}
+.alt{background:#fff;color:#111}#msg{min-height:1.3em;margin-top:10px}.muted{color:#666;font-size:14px}</style></head>
+<body><main><h2>Connect RxNudge to Wi-Fi</h2>
+<div class="card"><label>Network</label><select id="net"><option value="">Scanning…</option></select>
+<label>Or type the name (hidden network)</label><input id="ssid" maxlength="32" autocomplete="off">
+<label>Password</label><input id="pass" type="password" maxlength="63" autocomplete="off">
+<label><input type="checkbox" id="show" style="width:auto"> Show password</label>
+<button id="save">Connect</button> <button class="alt" id="scan">Scan again</button><p id="msg"></p></div>
+<p class="muted">The password is stored only on the device and is never shown or logged. Only 2.4 GHz networks work.</p></main>
+<script>
+const $=s=>document.querySelector(s);
+async function scan(){$('#net').innerHTML='<option value="">Scanning…</option>';try{const r=await fetch('/api/networks');const j=await r.json();
+$('#net').innerHTML='<option value="">Choose…</option>'+j.networks.map(n=>{const o=document.createElement('option');o.value=n.ssid;o.textContent=n.ssid+(n.secure?' 🔒':'')+' ('+n.rssi+' dBm)';return o.outerHTML}).join('');}catch(e){$('#net').innerHTML='<option value="">Scan failed</option>'}}
+$('#show').onchange=()=>{$('#pass').type=$('#show').checked?'text':'password'};
+$('#scan').onclick=async()=>{await fetch('/api/scan',{method:'POST'});scan()};
+async function poll(){for(let i=0;i<40;i++){await new Promise(r=>setTimeout(r,1500));try{const j=await(await fetch('/api/status')).json();$('#msg').textContent=j.message;if(j.state!=='testing')return;}catch(e){$('#msg').textContent='Connected successfully? The hotspot may have closed. Check the device screen.';return}}}
+$('#save').onclick=async()=>{const ssid=$('#ssid').value.trim()||$('#net').value;if(!ssid){$('#msg').textContent='Choose a network.';return}
+try{const r=await fetch('/api/wifi',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ssid,pass:$('#pass').value})});const j=await r.json();
+$('#msg').textContent=r.ok?'Testing the connection…':j.error;if(r.ok)poll();}catch(e){$('#msg').textContent='Could not reach the device.'}};
+scan();
+</script></body></html>

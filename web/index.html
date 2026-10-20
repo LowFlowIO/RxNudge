@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RxNudge</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:16px/1.4 system-ui,sans-serif;background:#f4f4f2;color:#111}
+header{background:#111;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+header b{font-size:18px}nav{display:flex;overflow-x:auto;background:#fff;border-bottom:1px solid #ccc}
+nav button{flex:1;border:0;border-radius:0;background:none;color:#111;padding:12px 10px;font-size:15px;border-bottom:3px solid transparent}
+nav button.on{border-color:#111;font-weight:600}main{padding:12px;max-width:720px;margin:auto}
+.card{background:#fff;border:1px solid #ccc;border-radius:8px;padding:12px;margin:0 0 12px}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+label{display:block;margin:8px 0 2px;font-size:14px;color:#444}
+input,select,textarea{width:100%;padding:10px;font-size:16px;border:1px solid #999;border-radius:6px;background:#fff}
+input[type=checkbox]{width:auto}button{padding:10px 14px;font-size:15px;border-radius:6px;border:1px solid #111;background:#111;color:#fff}
+button.alt{background:#fff;color:#111}button.del{background:#fff;color:#b00;border-color:#b00}
+.muted{color:#666;font-size:14px}.warn{background:#fff6d5;border:1px solid #d9b100;padding:8px 12px;border-radius:6px;font-size:14px}
+.err{color:#b00;min-height:1.2em}table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:6px;border-bottom:1px solid #ddd}
+.ph{border-left:3px solid #999;padding-left:8px;margin:8px 0}.wd label{display:inline-block;margin-right:8px}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}[hidden]{display:none!important}.row>div{flex:1;min-width:0}
+</style></head>
+<body><header><b>RxNudge</b><span id="hd" class="muted"></span></header>
+<div id="app"><main><p>Loading…</p></main></div>
+<script src="/app.js"></script></body></html>
