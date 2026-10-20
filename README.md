@@ -1,7 +1,8 @@
 # RxNudge
 
-<img src="preview.jpg" alt="RxNudge on reTerminal Sticky" width="400">
-
+<p align="center">
+  <img src="preview.jpg" alt="RxNudge on reTerminal Sticky" width="600">
+</p>
 
 Medication reminder firmware for the **Seeed reTerminal Sticky** (ESP32-S3, 3.97" 800 x 480 e-paper, touch,
 buzzer, battery, microSD, RTC). Several people per household, each with their own medicines, schedules,
