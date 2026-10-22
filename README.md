@@ -30,7 +30,9 @@ pio run -e sticky           # firmware
 ./scripts/flash_sticky.sh /dev/sticky full   # first install over USB
 ./scripts/make_release.sh   # clean build + tests + previews + release archives
 ```
-Prebuilt: `rxnudge-v1.0.4-binaries/` (merged flash image, parts, SHA-256).
+## Official Playground Online Installer
+
+> https://www.seeedstudio.com/sticky/playground/rx-nudge/
 
 ## Documentation
 | Doc | For |
